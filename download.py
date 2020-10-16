@@ -64,13 +64,13 @@ def save_article (page_name, counter):
         print (bcolors.BOLD + "> " + str (counter) + " Save page: " + page_file_name + bcolors.ENDC)
         with open (os.path.join (DATA_DIR, page_file_name), "w") as text_file:
             text_file.write (cleaned_text)
-        return counter
     else:
         # For file save change dangerous slash to underscore
         page_file_name = page_name.replace ("/", "_")
         print (bcolors.WARNING + "> Error string is EMPTY:" + page_file_name + bcolors.ENDC)
         with open (os.path.join ("errors", "error_save_article.txt"), "a") as text_file:
             text_file.write (page_file_name + "\n")
+    return counter
 
 if __name__ == "__main__":
     counter = 0
