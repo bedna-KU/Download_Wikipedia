@@ -60,5 +60,9 @@ if __name__ == "__main__":
         soup = BeautifulSoup (response.content, "html.parser")
         counter = scan_page (soup, counter)
         current_page = soup.select ('div.mw-allpages-nav a[href]')
-        current_page_href = current_page[1]["href"]
-        print (bcolors.OKGREEN + ">>> " + current_page_href + bcolors.ENDC)
+        current_page_text = current_page[1].text[0:6]
+        if current_page_text == "Ďalšia":
+            current_page_href = current_page[1]["href"]
+            print (bcolors.OKGREEN + ">>> " + current_page_href + bcolors.ENDC)
+        else:
+            current_page_href = False
