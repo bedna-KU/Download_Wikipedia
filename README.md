@@ -10,6 +10,10 @@ Change `main_categories` to categories from main page Wikipedia by language
 
 get_all_articles.py
 
+## Download all article names from special
+
+get_all_articles_special.py
+
 Extract only unique articles 'awk '!seen[$0]++' list/list1.txt > list/list-uniq.txt'
 
 ## Download text from all pages
