@@ -12,7 +12,7 @@ Get all articles from categories
 
 `get_all_articles.py`
 
-Extract only unique articles 'awk '!seen[$0]++' list/list1.txt > list/list-uniq.txt'
+Extract only unique articles `awk '!seen[$0]++' list/list1.txt > list/list-uniq.txt`
 
 ## Download all article names from special
 
