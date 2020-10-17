@@ -7,14 +7,14 @@ import time
 from bs4 import BeautifulSoup
 
 
-####################################################
+#########################################################
 # PARAMETERS
-####################################################
+#########################################################
 
-LIST_FILE = "list/list-uniq.txt"    # Directory for save files
-DATA_DIR = "articles"    # Directory for save files
+LIST_FILE = "test/list.txt"    # List with articles
+DATA_DIR = "test-articles"    # Directory for save files
 
-####################################################
+#########################################################
 
 # Define terminal colors
 class bcolors:
@@ -35,8 +35,8 @@ if not os.path.exists ("errors"):
     os.makedirs ("errors")
 
 wiki_html = wikipediaapi.Wikipedia (
-        language = 'sk',
-        extract_format = wikipediaapi.ExtractFormat.HTML
+    language = 'sk',
+    extract_format = wikipediaapi.ExtractFormat.HTML
 )
 
 def save_article (page_name, counter):
@@ -46,20 +46,20 @@ def save_article (page_name, counter):
 
     cleaned_text = ""
     for item in only_p_tags:
-        item = item.text.strip ()
+        cleaned_text = item.text.strip ()
         if item:
-            cleaned_text += item + "\n\n"
+            cleaned_text += cleaned_text + "\n\n"
+    # Strip beginning and trailing spaces
+    cleaned_text = cleaned_text.strip ()
+    # Remove lines shorten then 25 chars
+    cleaned_text = re.sub (r'^.{0,25}$', '', cleaned_text, flags=re.MULTILINE)
+    # Remove empty lines
+    cleaned_text = re.sub (r'\n\s*\n', '\n\n', cleaned_text)
+    # Rmove text under {}
+    cleaned_text = re.sub (r'\{.*\}', '', cleaned_text)
+    # For file save change dangerous slash to underscore
     if cleaned_text:
         counter += 1
-        # Strip beginning and trailing spaces
-        cleaned_text = cleaned_text.strip ()
-        # Remove lines shorten then 25 chars
-        cleaned_text = re.sub (r'^.{0,25}$', '', cleaned_text, flags=re.MULTILINE)
-        # Remove empty lines
-        cleaned_text = re.sub (r'\n\s*\n', '\n\n', cleaned_text)
-        # Rmove text under {}
-        cleaned_text = re.sub (r'\{.*\}', '', cleaned_text)
-        # For file save change dangerous slash to underscore
         page_file_name = page_name.replace ("/", "_")
         print (bcolors.BOLD + "> " + str (counter) + " Save page: " + page_file_name + bcolors.ENDC)
         with open (os.path.join (DATA_DIR, page_file_name), "w") as text_file:

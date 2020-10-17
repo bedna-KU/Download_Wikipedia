@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import wikipediaapi
 import os
-import argparse
 import re
 import time
 from bs4 import BeautifulSoup
@@ -33,8 +32,6 @@ if not os.path.exists (DATA_DIR):
     os.makedirs (DATA_DIR)
 if not os.path.exists ("errors"):
     os.makedirs ("errors")
-if not os.path.exists ("error_list"):
-    os.makedirs ("error_list")
 
 # Set download type as HTML
 wiki_html = wikipediaapi.Wikipedia (
