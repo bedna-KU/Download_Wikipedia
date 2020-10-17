@@ -20,6 +20,8 @@ Better results with 'Special:AllPages'
 
 `get_all_articles_special.py`
 
+For other languages, you must also change Slovak "Ďalšie" by language
+
 ## Download text from all pages
 
 download.py
