@@ -6,15 +6,19 @@ Change `LANGUAGE = "sk"` `in get_all_articles.py` into any language.
 
 Change `main_categories` to categories from main page Wikipedia by language
 
-## Download all article names
+## Download all articles names
 
-get_all_articles.py
+Get all articles from categories
 
-## Download all article names from special
+`get_all_articles.py`
 
-get_all_articles_special.py
+Extract only unique articles `awk '!seen[$0]++' list/list1.txt > list/list-uniq.txt`
 
-Extract only unique articles 'awk '!seen[$0]++' list/list1.txt > list/list-uniq.txt'
+## Download all articles names from special
+
+Better results with 'Special:AllPages'
+
+`get_all_articles_special.py`
 
 ## Download text from all pages
 
