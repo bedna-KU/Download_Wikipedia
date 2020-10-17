@@ -51,7 +51,7 @@ def save_article (page_name, counter):
     # Strip beginning and trailing spaces
     cleaned_text = cleaned_text.strip ()
     # Remove lines shorten then 25 chars
-    cleaned_text = re.sub (r'^.{0,25}$', '', cleaned_text, flags=re.MULTILINE)
+    cleaned_text = re.sub (r'^.{0,25}$', '', cleaned_text, flags = re.MULTILINE)
     # Remove empty lines
     cleaned_text = re.sub (r'\n\s*\n', '\n\n', cleaned_text)
     # Rmove text under {}
