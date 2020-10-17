@@ -46,9 +46,8 @@ def save_article (page_name, counter):
 
     cleaned_text = ""
     for item in only_p_tags:
-        cleaned_text = item.text.strip ()
-        if item:
-            cleaned_text += cleaned_text + "\n\n"
+        if item.text:
+            cleaned_text += item.text.strip () + "\n\n"
     # Strip beginning and trailing spaces
     cleaned_text = cleaned_text.strip ()
     # Remove lines shorten then 25 chars
